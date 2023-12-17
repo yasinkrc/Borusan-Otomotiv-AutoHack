@@ -1,0 +1,11 @@
+.my-arrow:hover {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.disable {
+  pointer-events: none;
+  cursor: default;
+  background-color: rgb(128, 128, 128);
+  border-color: rgb(128, 128, 128);
+}

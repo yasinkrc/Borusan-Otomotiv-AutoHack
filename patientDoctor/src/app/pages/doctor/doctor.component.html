@@ -1,0 +1,109 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+     style="background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger"></span>
+</div>
+<div class="container-fluid mt--7">
+  <div class="card bg-secondary shadow">
+    <div class="card-header bg-white border-0">
+      <div class="row align-items-center">
+        <div class="col-12">
+          <h3 class="mb-0 text-center">Hasta Kayıt</h3>
+        </div>
+        <!--        <div class="col-4 text-right">-->
+        <!--          <a href="#!" class="btn btn-sm btn-primary">Settings</a>-->
+        <!--        </div>-->
+      </div>
+    </div>
+    <div class="card-body">
+      <form #patientRegisterForm="ngForm">
+        <h6 class="heading-small text-muted mb-4">Hasta Bilgileri</h6>
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <label class="form-control-label" for="name">İsim</label>
+              <div [ngClass]="{'has-success':name.valid&&name.touched,'has-danger':name.invalid&&name.touched}"
+                   class="form-group">
+                <input [ngClass]="{'is-valid':name.valid&&name.touched,'is-invalid':name.invalid&&name.touched}"
+                       name="name" #name="ngModel" ngModel required minlength="2" type="text"
+                       placeholder="İsim Giriniz" class="form-control" id="name"
+                >
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <label class="form-control-label" for="surname">Soyisim</label>
+              <div
+                [ngClass]="{'has-success':surname.valid&&surname.touched,'has-danger':surname.invalid&&surname.touched}"
+                class="form-group">
+                <input
+                  [ngClass]="{'is-valid':surname.valid&&surname.touched,'is-invalid':surname.invalid&&surname.touched}"
+                  name="surname" #surname="ngModel" ngModel required minlength="2" type="text"
+                  placeholder="Soyad Girin" class="form-control" id="surname"
+                >
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <label class="form-control-label" for="identification_number">TC</label>
+              <div
+                [ngClass]="{'has-success':identification_number.valid&&identification_number.touched,'has-danger':identification_number.invalid&&identification_number.touched}"
+                class="form-group">
+                <input
+                  [ngClass]="{'is-valid':identification_number.valid&&identification_number.touched,'is-invalid':identification_number.invalid&&identification_number.touched}"
+                  name="identification_number" #identification_number="ngModel" ngModel required minlength="11"
+                  pattern="^[1-9]{1}[0-9]{9}[02468]{1}$"
+                  type="number"
+                  placeholder="TC Giriniz" class="form-control" id="identification_number"
+                >
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <label class="form-control-label" for="starting_date">Tarih</label>
+              <div
+                [ngClass]="{ 'has-success':starting_date.touched&&starting_date.valid ,'has-danger':starting_date.touched&&starting_date.invalid}"
+                class="form-group">
+                <div class="input-group">
+                  <input
+                    [ngClass]="{ 'is-valid':starting_date.touched&&starting_date.valid,'is-invalid':starting_date.touched&&starting_date.invalid}"
+                    class="form-control datepicker" placeholder="Başlama Tarihi Girin" name="starting_date"
+                    ngbDatepicker #starting_date="ngModel"
+                    id="starting_date"
+                    ngModel
+                    #d="ngbDatepicker" (click)="d.toggle()" type="text"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4"/>
+        <h6 class="heading-small text-muted mb-4">Hastalık / Extra Bilgiler</h6>
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label class="form-control-label" for="disease">Hastalık </label>
+                <input id="disease" ngModel #disease="ngModel" name="disease"
+                       class="form-control " placeholder="Hastalık Giriniz"
+                       type="text">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label class="form-control-label" for="comment">Doktor Tavisyesi </label>
+                <textarea id="comment" ngModel #comment="ngModel" name="comment"
+                          class="form-control"
+                          placeholder="Doktor Tavisyesi Giriniz">
+
+                </textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4"/>
+        <button (click)="savePatient(patientRegisterForm)" type="submit" class="btn btn-primary btn-lg btn-block">
+          Kaydet
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>

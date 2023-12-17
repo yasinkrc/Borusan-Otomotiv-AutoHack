@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hasta
+    username: postgres
+    password: 12345
+    driver-class-name: org.postgresql.Driver
+gpt3:
+  apiKey: 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

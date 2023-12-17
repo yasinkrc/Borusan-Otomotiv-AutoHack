@@ -1,0 +1,53 @@
+<div class="Watch">
+  <div class="Strap"></div>
+  <div class="Screen">
+    <div class="Crown"></div>
+    <div class="Button"></div>
+    <div class="Clock row d-flex justify-content-center" [ngClass]="[!isTc?'align-items-center':'']">
+      <ng-template [ngIf]="isTc">
+        <app-notify *ngIf="isValue" [value]="notify"></app-notify>
+        <div *ngIf="!isValue" class="row d-flex flex-row justify-content-center">
+          <div class="col">
+            <div class="card"
+                 style="width: 100%; color: aliceblue; font-size: 30px; height: 100%;  margin: 0; padding: 0; border: none; background-color: transparent;">
+              <div class="card-body">
+                <h1 style="font-size: 65px" class="card-title text-center mb-4">{{value.icon}}</h1>
+                <h2 class="text-center">{{value.name}}</h2>
+                <hr>
+                <p class="card-text text-center">{{value.value}}</p>
+                <h4 (click)="i==9?i=0:i=i+1; value=selectedValue[i]"
+                    class="card-text rounded-circle text-center my-arrow">
+                  ➜ </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!isValue" (click)="sendToGpt()" class="row align-items-end">
+          <div class="btn btn-danger btn-lg">Sağlık Kontrolü</div>
+        </div>
+        <div *ngIf="isValue" (click)="isValue=!isValue" class="row align-items-end">
+          <div class="btn btn-warning btn-lg">Geri Dön</div>
+        </div>
+      </ng-template>
+      <ng-template [ngIf]="!isTc">
+        <div class="card"
+             style="width: 100%; color: aliceblue; font-size: 30px; height: 100%;  margin: 0; padding: 0; border: none; background-color: transparent;">
+          <div class="card-body">
+            <h1 style="font-size: 45px" class="card-title text-center mb-4">Lütfen Tc Giriniz</h1>
+            <hr class="mb-5">
+            <div class="input-group input-group-lg">
+              <input type="text" placeholder="Tc Giriniz" [(ngModel)]="tc" class="form-control"
+                     aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            </div>
+            <div class="row align-items-center">
+              <div (click)="isTc=!isTc;" class="btn btn-warning btn-lg"
+                   [ngClass]="[tc.length<11 || tc.length>11 ? 'disable':'']">
+                Giriş Yap
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
